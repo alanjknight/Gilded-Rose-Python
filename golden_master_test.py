@@ -17,6 +17,7 @@ class GoldenMasterTest(unittest.TestCase):
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
             Item(name="Conjured Mana Cake", sell_in=3, quality=6),
+            Item(name="Aged Brie", sell_in=2, quality=51)
         ]
 
         gilded_rose = GildedRose(items)
@@ -27,7 +28,8 @@ class GoldenMasterTest(unittest.TestCase):
             "[+5 Dexterity Vest, 9, 19, Aged Brie, 1, 1, Elixir of the Mongoose, 4, 6, Sulfuras, Hand of Ragnaros, 0, "
             "80, Sulfuras, Hand of Ragnaros, -1, 80, Backstage passes to a TAFKAL80ETC concert, 14, 21, "
             "Backstage passes to a TAFKAL80ETC concert, 9, 50, Backstage passes to a TAFKAL80ETC concert, 4, 50, "
-            "Conjured Mana Cake, 2, 5]"
+            "Conjured Mana Cake, 2, 5, "
+            "Aged Brie, 1, 51]"
         )
 
         for _ in range(10):
@@ -38,7 +40,8 @@ class GoldenMasterTest(unittest.TestCase):
             "[+5 Dexterity Vest, -1, 8, Aged Brie, -9, 20, Elixir of the Mongoose, -6, 0, Sulfuras, "
             "Hand of Ragnaros, 0, 80, Sulfuras, Hand of Ragnaros, -1, 80, Backstage passes to a "
             "TAFKAL80ETC concert, 4, 38, Backstage passes to a TAFKAL80ETC concert, -1, 0, "
-            "Backstage passes to a TAFKAL80ETC concert, -6, 0, Conjured Mana Cake, -8, 0]"
+            "Backstage passes to a TAFKAL80ETC concert, -6, 0, Conjured Mana Cake, -8, 0, "
+            "Aged Brie, -9, 51]"
         )
 
 
