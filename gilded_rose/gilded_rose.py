@@ -11,7 +11,7 @@ class GildedRose(object):
         if item.quality < 50:
             item.quality += 1
 
-    def backstage_pass_additional_increment(self,item):
+    def backstage_pass_additional_quality_increment(self,item):
         # if the concert is less than 10 days away increment quality once.  
         # If less than 5 days away increment quality twice.
         if item.sell_in < 10:
@@ -38,7 +38,7 @@ class GildedRose(object):
                 if item.quality < 50:
                     self.increment_quality(item)
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        self.backstage_pass_additional_increment(item)  
+                        self.backstage_pass_additional_quality_increment(item)  
             if item.sell_in < 0:
                 self.update_sold_quality(item)
                     
