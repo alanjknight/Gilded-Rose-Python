@@ -11,31 +11,34 @@ class GildedRose(object):
         if item.quality < 50:
             item.quality += 1
 
-#    items_increment_in_quality["Backstage passes to a TAFKAL80ETC concert",
-#                                "Sulfuras, Hand of Ragnaros",
-#                                ]
-    
+    def backstage_pass_additional_increment(self,item):
+        # if the concert is less than 10 days away increment quality once.  
+        # If less than 5 days away increment quality twice.
+        if item.sell_in < 10:
+            self.increment_quality(item)
+        if item.sell_in < 5:
+            self.increment_quality(item)
+
+    def update_sold_quality(self, item):
+        if item.name == "Aged Brie":
+            self.increment_quality(item)
+        elif item.name == "Backstage passes to a TAFKAL80ETC concert":
+            item.quality = 0
+        elif item.name != "Sulfuras, Hand of Ragnaros":
+            self.decrement_quality(item)
 
     def update_quality(self):
         for item in self.items:
+            if item.name != "Sulfuras, Hand of Ragnaros":
+                item.sell_in = item.sell_in - 1
+
             if item.name not in ["Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert"]:
                 self.decrement_quality(item)
             else:
                 if item.quality < 50:
                     self.increment_quality(item)
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        if item.sell_in < 11:
-                            self.increment_quality(item)
-                        if item.sell_in < 6:
-                            self.increment_quality(item)
-            if item.name != "Sulfuras, Hand of Ragnaros":
-                item.sell_in = item.sell_in - 1
+                        self.backstage_pass_additional_increment(item)  
             if item.sell_in < 0:
-                if item.name != "Aged Brie":
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                        if item.name != "Sulfuras, Hand of Ragnaros":
-                            self.decrement_quality(item)
-                    else:
-                        item.quality = 0
-                else:
-                    self.increment_quality(item)
+                self.update_sold_quality(item)
+                    
